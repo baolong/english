@@ -1,2 +1,2 @@
-english : english.c
+all:
 	gcc -o english english.c
