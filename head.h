@@ -31,11 +31,11 @@ char *cc_contrary={"\033[7m"};
 char *cc_blanking={"\033[8m"};
 
 //move cursor
-char *move_up(unsigned int num)
+char* move_up(unsigned int num)
 {
 	char *code = malloc(sizeof(char)*8);
-    menset(code,0,sizeof(code));
-    code = {"\033["};
+    memset(code,0,sizeof(code));
+    strcpy(code,"\033[");
 	if (num<10)
     {
         code[5] = 48+num;
