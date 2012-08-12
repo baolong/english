@@ -30,6 +30,14 @@ char *cc_flicker={"\033[5m"};    //闪烁
 char *cc_contrary={"\033[7m"};  //反显
 char *cc_blanking={"\033[8m"};  //消隐
 
+char *cur_clear()
+{
+    char *code = malloc(sizeof(7));
+    memset(code,0,sizeof(code));
+    strcpy(code,"\033[K");
+    return code;
+}
+
 //move cursor
 char* move_up(unsigned int num)
 {
@@ -37,20 +45,9 @@ char* move_up(unsigned int num)
     memset(code,0,sizeof(code));
     strcpy(code,"\033[");
     char code1[4];
-	if (num<10)
-    {
-        code1[0] = 48+num;
-        code1[1] = 'A';
-        strcat(code,code1);
-    }
-    else
-    {
-        code1[0] = 48+num/10;
-        code1[1] = 48+num%10;
-        code1[3] = 'A';
-        code1[4] = '\0';
-        strcat(code,code1);
-    }
+    sprintf(code1,"%d",num);
+    strcat(code,code1);
+    strcat(code,"A");
     return code;
 }
 
@@ -60,21 +57,9 @@ char* move_down(unsigned int num)
     memset(code,0,sizeof(code));
     strcpy(code,"\033[");
     char code1[4];
-    if (num<10)
-    {
-        code1[0] = 48+num;
-        code1[1] = 'B';
-        code1[2] = '\0';
-        strcat(code,code1);
-    }
-    else
-    {
-        code1[0] = 48+num/10;
-        code1[1] = 48+num%10;
-        code1[2] = 'B';
-        code1[3] = '\0';
-        strcat(code,code1);
-    }
+    sprintf(code1,"%d",num);
+    strcat(code,code1);
+    strcat(code,"B");
     return code;
 
 }
@@ -85,21 +70,9 @@ char* move_left(unsigned int num)
     memset(code,0,sizeof(code));
     strcpy(code,"\033[");
     char code1[4];
-    if (num<10)
-    {
-        code1[0] = 48+num;
-        code1[1] = 'D';
-        code1[2] = '\0';
-        strcat(code,code1);
-    }
-    else
-    {
-        code1[0] = 48+num/10;
-        code1[1] = 48+num%10;
-        code1[2] = 'D';
-        code1[3] = '\0';
-        strcat(code,code1);
-    }
+    sprintf(code1,"%d",num);
+    strcat(code,code1);
+    strcat(code,"D");
     return code;
 }
 
@@ -109,20 +82,23 @@ char* move_right(unsigned int num)
     memset(code,0,sizeof(code));
     strcpy(code,"\033[");
     char code1[4];
-    if (num<10)
-    {
-        code1[0] = 48+num;
-        code1[1] = 'C';
-        code1[2] = '\0';
-        strcat(code,code1);
-    }
-    else
-    {
-        code1[0] = 48+num/10;
-        code1[1] = 48+num%10;
-        code1[2] = 'C';
-        code1[3] = '\0';
-        strcat(code,code1);
-    }
+    sprintf(code1,"%d",num);
+    strcat(code,code1);
+    strcat(code,"C");
+    return code;
+}
+
+char* set_xy(unsigned int x,unsigned int y)
+{
+    char *code = malloc(sizeof(char)*11);
+    char code1[7] = {""};
+    memset(code,0,sizeof(code));
+    strcpy(code,"\033[");
+    sprintf(code1,"%d",x);
+    strcat(code,code1);
+    strcat(code,";");
+    sprintf(code1,"%d",y);
+    strcat(code,code1);
+    strcat(code,"H");
     return code;
 }
