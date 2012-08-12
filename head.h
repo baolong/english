@@ -23,12 +23,12 @@ char *deep_green={"\033[36m"};
 char *write={"\033[37m"};
 
 //control code
-char *cc_close={"\033[0m"};
-char *cc_highlight={"\033[1m"};
-char *cc_underline={"\033[4m"};
-char *cc_flicker={"\033[5m"};
-char *cc_contrary={"\033[7m"};
-char *cc_blanking={"\033[8m"};
+char *cc_close={"\033[0m"};  //关闭所有属性
+char *cc_highlight={"\033[1m"};  //设置高亮度
+char *cc_underline={"\033[4m"};   //下划线
+char *cc_flicker={"\033[5m"};    //闪烁
+char *cc_contrary={"\033[7m"};  //反显
+char *cc_blanking={"\033[8m"};  //消隐
 
 //move cursor
 char* move_up(unsigned int num)
@@ -79,3 +79,50 @@ char* move_down(unsigned int num)
 
 }
 
+char* move_left(unsigned int num)
+{
+    char *code = malloc(sizeof(char)*8);
+    memset(code,0,sizeof(code));
+    strcpy(code,"\033[");
+    char code1[4];
+    if (num<10)
+    {
+        code1[0] = 48+num;
+        code1[1] = 'D';
+        code1[2] = '\0';
+        strcat(code,code1);
+    }
+    else
+    {
+        code1[0] = 48+num/10;
+        code1[1] = 48+num%10;
+        code1[2] = 'D';
+        code1[3] = '\0';
+        strcat(code,code1);
+    }
+    return code;
+}
+
+char* move_right(unsigned int num)
+{
+    char *code = malloc(sizeof(char)*8);
+    memset(code,0,sizeof(code));
+    strcpy(code,"\033[");
+    char code1[4];
+    if (num<10)
+    {
+        code1[0] = 48+num;
+        code1[1] = 'C';
+        code1[2] = '\0';
+        strcat(code,code1);
+    }
+    else
+    {
+        code1[0] = 48+num/10;
+        code1[1] = 48+num%10;
+        code1[2] = 'C';
+        code1[3] = '\0';
+        strcat(code,code1);
+    }
+    return code;
+}

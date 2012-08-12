@@ -3,5 +3,5 @@
 
 int main()
 {
-    printf("%s%shello!%s\n",move_down(5),red,cc_close);
+    printf("%s%shello!%s\n",move_right(5),red,cc_close);
 }
