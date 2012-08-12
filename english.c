@@ -3,6 +3,5 @@
 
 int main()
 {
-    printf("你好Git\n");
-    printf("");
+    printf("%s%shello!%s\n",move_down(5),red,cc_close);
 }

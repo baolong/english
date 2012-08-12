@@ -36,22 +36,46 @@ char* move_up(unsigned int num)
 	char *code = malloc(sizeof(char)*8);
     memset(code,0,sizeof(code));
     strcpy(code,"\033[");
+    char code1[4];
 	if (num<10)
     {
-        code[5] = 48+num;
-        code[6] = 'A';
+        code1[0] = 48+num;
+        code1[1] = 'A';
+        strcat(code,code1);
     }
     else
     {
-        code[5] = 48+num/10;
-        code[6] = 48+num%10;
-        code[7] = 'A';
+        code1[0] = 48+num/10;
+        code1[1] = 48+num%10;
+        code1[3] = 'A';
+        code1[4] = '\0';
+        strcat(code,code1);
     }
     return code;
 }
 
 char* move_down(unsigned int num)
 {
-    char code[8]={""};
+    char *code = malloc(sizeof(char)*8);
+    memset(code,0,sizeof(code));
+    strcpy(code,"\033[");
+    char code1[4];
+    if (num<10)
+    {
+        code1[0] = 48+num;
+        code1[1] = 'B';
+        code1[2] = '\0';
+        strcat(code,code1);
+    }
+    else
+    {
+        code1[0] = 48+num/10;
+        code1[1] = 48+num%10;
+        code1[2] = 'B';
+        code1[3] = '\0';
+        strcat(code,code1);
+    }
+    return code;
+
 }
 
