@@ -1,7 +1,11 @@
 #include <stdio.h>
-#include "head.h"
+#include "fun.h"
+#include "keyboard.h"
 
-int main()
+int main(void)  
 {
-    printf("%s%shello!%s\n",move_right(5),red,cc_close);
-}
+    while(1)
+        printf("%d ",check_kb());
+    return 0;  
+}  
+
