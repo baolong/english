@@ -26,7 +26,8 @@ int kbhit(void)
         return 1;  
     }  
     return 0;  
-}  
+}
+
 int check_kb(void)  
 {
     int a=-1,b=-1;
