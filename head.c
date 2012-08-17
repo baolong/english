@@ -1,5 +1,10 @@
 #include "head.h"
 
+unsigned int sum_of_list=0;
+unsigned int sum_of_words[30]=0;
+char En[30][100][40];
+char Ch[30][100][40];
+
 //background colours define
 char *back_black={"\033[40m"};
 char *back_red={"\033[41m"};

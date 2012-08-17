@@ -6,5 +6,6 @@
 extern unsigned int sign_last;
 extern unsigned int sign;
 
+void Init();
 void Menu_Display();
 #endif
