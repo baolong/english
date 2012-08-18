@@ -1,8 +1,10 @@
 #include "head.h"
 
-unsigned int sum_of_list=0;
-unsigned int sum_of_words[30]=0;
+int sum_of_list;
+int sum_of_words[30];
 char En[30][100][40];
+//int sum_of_words[30]={3,4,5,2,1};
+//char En[30][100][40]={{"qwe","asd","zcx"},{"vxcv","vbc","hjj","mnm"},{"qwer","rd","dfs","fg","dfd"},{"eqwe","df"},{"sd"}};
 char Ch[30][100][40];
 
 //background colours define

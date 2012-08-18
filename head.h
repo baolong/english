@@ -5,8 +5,8 @@
 #ifndef _HEAD_H
 #define _HEAD_H
 
-extern unsigned int sum_of_list;
-extern unsigned int sum_of_words[];
+extern int sum_of_list;
+extern int sum_of_words[30];
 extern char En[30][100][40];
 extern char Ch[30][100][40];
 
