@@ -228,7 +228,7 @@ void Show_()
         printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(15,20),red,cc_close);
         getchar(); 
     }
-}
+
         for (a=0;a<=sum_of_list;a++)
         {
 
@@ -239,4 +239,4 @@ void Show_()
             }
             printf("\n");
         }
- 
+} 
