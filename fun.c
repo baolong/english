@@ -229,3 +229,14 @@ void Show_()
         getchar(); 
     }
 }
+        for (a=0;a<=sum_of_list;a++)
+        {
+
+            printf("List %d\n",a);
+            for (b=0;b<=sum_of_words[a];b++)
+            {
+                printf("%s %s\n",En[a][b],Ch[a][b]);
+            }
+            printf("\n");
+        }
+ 
