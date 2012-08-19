@@ -40,6 +40,8 @@ extern char *cc_blanking;  //消隐
 
 extern char *cc_clear_line;
 extern char *cc_clear;
+extern char *cc_hide;
+extern char *cc_show;
 
 char* move_up(unsigned int);
 char* move_down(unsigned int);

@@ -9,6 +9,7 @@ extern unsigned int sign;
 void Init();
 void Save();
 int En_to_Ch_Show();
-void Add_list();
+int Add_list();
+void Show_();
 void Menu_Display();
 #endif

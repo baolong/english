@@ -37,6 +37,9 @@ char *cc_blanking={"\033[8m"};  //消隐
 
 char *cc_clear_line={"\033[K"};
 char *cc_clear={"\033[2J"};
+char *cc_hide={"\033[?25l"};
+char *cc_show={"\033[?25h"};
+
 
 char* move_up(unsigned int);
 char* move_down(unsigned int);
