@@ -8,6 +8,7 @@ int main(void)
    while(1)
     {
         Menu_Display();
+
     }
 //    Save();
 //    printf("%d %d\n",sum_of_list,sum_of_words[0]);
