@@ -229,13 +229,15 @@ void Show_()
         printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(15,20),red,cc_close);
         getchar(); 
     }
-    for (a=0;a<=sum_of_list;a++)
-    {
-        printf("List %d\n",a);
-        for (b=0;b<=sum_of_words[a];b++)
+
+        for (a=0;a<=sum_of_list;a++)
         {
-            printf("%s %s\n",En[a][b],Ch[a][b]);
+
+            printf("List %d\n",a);
+            for (b=0;b<=sum_of_words[a];b++)
+            {
+                printf("%s %s\n",En[a][b],Ch[a][b]);
+            }
+            printf("\n");
         }
-        printf("\n");
-    }
 } 
