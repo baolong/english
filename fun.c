@@ -208,7 +208,6 @@ int Add_list()
 
 void Show_()
 {
-    int a,b;
     while(1)
     {
         printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
