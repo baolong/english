@@ -6,7 +6,7 @@
 #define _HEAD_H
 
 extern int sum_of_list;
-extern int sum_of_words[30];
+extern int sum_of_words[31];
 extern char En[30][100][40];
 extern char Ch[30][100][40];
 
