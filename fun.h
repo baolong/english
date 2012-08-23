@@ -12,4 +12,5 @@ int Show_List();
 int Add_list();
 void Show_();
 void Menu_Display();
+void EntoCh();
 #endif

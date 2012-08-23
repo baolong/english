@@ -69,6 +69,19 @@ void Save()
     fclose(fp);
 }
 
+void Show_Frame()
+{
+    int x = 8;
+    printf("%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",cc_clear,set_xy(7,20),red,cc_close);
+    while(x < 15)
+    {
+        printf("%s%s☆%s                               %s☆%s\n",set_xy(x++,20),\
+        red,cc_close,red,cc_close);
+    }
+    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(15,20),red,cc_close);
+ 
+}
+
 void Menu_Display()
 {
     unsigned int ASCII = 0;
@@ -109,7 +122,7 @@ void Menu_Display()
     {
         if (sign == 1)
         {
-            ;
+            EntoCh();
         }
         else if(sign == 2)
         {
@@ -188,7 +201,7 @@ int Show_List()
                 choose_test_sign_last = choose_test_sign;
                 choose_test_sign--;
                 if (choose_test_sign == 0)
-                    choose_test_sign = sum_of_list - 1;
+                    choose_test_sign = sum_of_list;
             }
             else if (ASCII == 10)        //按下回车
                 return choose_test_sign;
@@ -204,18 +217,7 @@ int Add_list()
     printf("%s",cc_show);
     while(1)
     {
-        printf("%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",cc_clear,set_xy(7,20),red,cc_close);
-        printf("%s%s☆%s                                 %s☆%s\n",set_xy(8,20),\
-            red,cc_close,red,cc_close);
-        printf("%s%s☆%s                                 %s☆%s\n",set_xy(9,20),\
-            red,cc_close,red,cc_close);
-        printf("%s%s☆%s                                 %s☆%s\n",set_xy(10,20),\
-            red,cc_close,red,cc_close);
-        printf("%s%s☆%s                                 %s☆%s\n",set_xy(11,20),\
-            red,cc_close,red,cc_close);
-        printf("%s%s☆%s                                 %s☆%s\n",set_xy(12,20),\
-            red,cc_close,red,cc_close);
-        printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(13,20),red,cc_close);
+        Show_Frame();  
         printf("%s%s录入新词汇组：%s",set_xy(8,25),blue,cc_close);
         printf("%s%s单词：%s",set_xy(10,25),blue,cc_close);
         printf("%s%s解释：%s",set_xy(11,25),blue,cc_close);
@@ -239,48 +241,38 @@ int Add_list()
 
 void Show_()
 {
-    int temp=0,word_num=0;
+    int temp=0,word_num=1,x=8;
     printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(8,20),\
+    while(x < 15)
+    {
+        printf("%s%s☆%s                               %s☆%s\n",set_xy(x++,20),\
         red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(9,20),\
-        red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(10,20),\
-        red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(11,20),\
-        red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(12,20),\
-        red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(13,20),\
-        red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(14,20),\
-        red,cc_close,red,cc_close);
+    }
     printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(15,20),red,cc_close);
     temp = Show_List();
     printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(8,20),\
+    while(x >= 8)
+    {
+        printf("%s%s☆%s                               %s☆%s\n",set_xy(x--,20),\
         red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(9,20),\
-        red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(10,20),\
-        red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(11,20),\
-        red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(12,20),\
-        red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(13,20),\
-        red,cc_close,red,cc_close);
-    printf("%s%s☆%s                               %s☆%s\n",set_xy(14,20),\
-        red,cc_close,red,cc_close);
+    }
     printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(15,20),red,cc_close);
+    x = 9;
     if (temp != 0)
     {
-        while(word_num <= sum_of_words[temp])
+        printf("%s%s该列表单词数：%d%s",set_xy(8,22),yellow,sum_of_words[temp]-1,cc_close);
+        while(word_num < sum_of_words[temp])
         {
-            printf("%s%s单词：%s%s",set_xy(8,22),blue,En[temp][word_num],cc_close);
-            printf("%s%s解释：%s%s",set_xy(9,22),green,Ch[temp][word_num],cc_close);
+            printf("%s%s单词：%s%s",set_xy(x++,22),blue,En[temp][word_num],cc_close);
+            printf("%s%s解释：%s%s",set_xy(x++,22),green,Ch[temp][word_num],cc_close);
             word_num++;
+            x++;
         }
         getchar();
     }
-} 
+}
+
+void EntoCh()
+{
+    
+}
