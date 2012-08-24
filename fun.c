@@ -72,13 +72,14 @@ void Save()
 void Show_Frame()
 {
     int x = 8;
-    printf("%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",cc_clear,set_xy(7,20),red,cc_close);
+    printf("%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_clear,set_xy(7,20),red,cc_close);
     while(x < 15)
     {
-        printf("%s%s☆%s                               %s☆%s\n",set_xy(x++,20),\
-        red,cc_close,red,cc_close);
+        printf("%s%s☆%s                               %s%s☆%s",set_xy(x,20),\
+        red,cc_close,set_xy(x,52),red,cc_close);
+        x++;
     }
-    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(15,20),red,cc_close);
+    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(15,20),red,cc_close);
  
 }
 
@@ -87,22 +88,22 @@ void Menu_Display()
     unsigned int ASCII = 0;
     strcpy(choose_show[sign],"\033[47;30m");
     strcpy(choose_show[sign_last],"\033[34m");
-    printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
-    printf("%s%s☆%s%s       %s1. 测试（汉译英）%s       %s☆%s\n",set_xy(8,20),\
-                red,cc_close,blue,choose_show[1],cc_close,red,cc_close);
-    printf("%s%s☆%s%s       %s2. 测试（英译汉）%s       %s☆%s\n",set_xy(9,20),\
-                red,cc_close,blue,choose_show[2],cc_close,red,cc_close);
-    printf("%s%s☆%s%s       %s3. 查看学习进度%s         %s☆%s\n",set_xy(10,20),\
-                red,cc_close,blue,choose_show[3],cc_close,red,cc_close);
-    printf("%s%s☆%s%s       %s4. 录入新词汇组%s         %s☆%s\n",set_xy(11,20),\
-                red,cc_close,blue,choose_show[4],cc_close,red,cc_close);
-    printf("%s%s☆%s%s       %s5. 删除词汇组%s           %s☆%s\n",set_xy(12,20),\
-                red,cc_close,blue,choose_show[5],cc_close,red,cc_close);
-    printf("%s%s☆%s%s       %s6. 导        入%s         %s☆%s\n",set_xy(13,20),\
-                red,cc_close,blue,choose_show[6],cc_close,red,cc_close);
-    printf("%s%s☆%s%s       %s7. 退        出%s         %s☆%s\n",set_xy(14,20),\
-                red,cc_close,blue,choose_show[7],cc_close,red,cc_close);
-    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(15,20),red,cc_close);
+    printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
+    printf("%s%s☆%s%s       %s1. 测试（汉译英）%s       %s%s☆%s",set_xy(8,20),\
+                red,cc_close,blue,choose_show[1],cc_close,set_xy(8,52),red,cc_close);
+    printf("%s%s☆%s%s       %s2. 测试（英译汉）%s       %s%s☆%s",set_xy(9,20),\
+                red,cc_close,blue,choose_show[2],cc_close,set_xy(9,52),red,cc_close);
+    printf("%s%s☆%s%s       %s3. 查看学习进度%s         %s%s☆%s",set_xy(10,20),\
+                red,cc_close,blue,choose_show[3],cc_close,set_xy(10,52),red,cc_close);
+    printf("%s%s☆%s%s       %s4. 录入新词汇组%s         %s%s☆%s",set_xy(11,20),\
+                red,cc_close,blue,choose_show[4],cc_close,set_xy(11,52),red,cc_close);
+    printf("%s%s☆%s%s       %s5. 删除词汇组%s           %s%s☆%s",set_xy(12,20),\
+                red,cc_close,blue,choose_show[5],cc_close,set_xy(12,52),red,cc_close);
+    printf("%s%s☆%s%s       %s6. 导        入%s         %s%s☆%s",set_xy(13,20),\
+                red,cc_close,blue,choose_show[6],cc_close,set_xy(13,52),red,cc_close);
+    printf("%s%s☆%s%s       %s7. 退        出%s         %s%s☆%s",set_xy(14,20),\
+                red,cc_close,blue,choose_show[7],cc_close,set_xy(14,52),red,cc_close);
+    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(15,20),red,cc_close);
     ASCII = check_kb();
     if (ASCII == 66)             //按下方向键↑
     {
@@ -117,6 +118,11 @@ void Menu_Display()
         sign--;
         if (sign ==0)
           sign = 7;
+    }
+    else if (ASCII == 'q')
+    {
+        printf("%s%s%s",cc_show,set_xy(0,0),cc_clear);
+        exit(1);
     }
     else if (ASCII == 10)        //按下回车
     {
@@ -146,7 +152,7 @@ void Menu_Display()
         }
         else if (sign ==7)
         {
-            printf("%s",cc_show);
+            printf("%s%s%s",cc_show,set_xy(0,0),cc_clear);
             exit(1);
         }
     }
@@ -165,17 +171,18 @@ int Show_List()
         list_num = 1;
         strcpy(choose_test_show[choose_test_sign],"\033[47;30m");
         strcpy(choose_test_show[choose_test_sign_last],"\033[34m");
-        printf("%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",cc_clear,set_xy(7,20),red,cc_close);
+        printf("%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_clear,set_xy(7,20),red,cc_close);
         if (sum_of_list == 0)
         {
             while(num < 8)
             {
-                printf("%s%s☆%s                               %s☆%s\n",set_xy(x++,20),\
-                    red,cc_close,red,cc_close);
+                printf("%s%s☆%s                               %s%s☆%s",set_xy(x,20),\
+                    red,cc_close,set_xy(x,52),red,cc_close);
                 num++;
+                x++;
             }
             printf("%s%s列表为空！%s",set_xy(11,30),blue,cc_close);
-            printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(x,20),red,cc_close); 
+            printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(x,20),red,cc_close); 
             getchar();
             return 0;
         }
@@ -183,11 +190,12 @@ int Show_List()
         {
             while(list_num <= sum_of_list)
             {
-                printf("%s%s☆%s%s       %s List %d%s                 %s☆%s\n",set_xy(x++,20),\
-                    red,cc_close,blue,choose_test_show[list_num],list_num,cc_close,red,cc_close);
+                printf("%s%s☆%s%s       %s List %d%s                 %s%s☆%s",set_xy(x,20),\
+                    red,cc_close,blue,choose_test_show[list_num],list_num,cc_close,set_xy(x,52),red,cc_close);
                 list_num++;
-                printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(x,20),red,cc_close);
+                x++;
             }
+            printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(x,20),red,cc_close);
             ASCII = check_kb();
             if (ASCII == 66)             //按下方向键↑
             {
@@ -203,6 +211,8 @@ int Show_List()
                 if (choose_test_sign == 0)
                     choose_test_sign = sum_of_list;
             }
+            else if (ASCII == 'q')
+                return 0;
             else if (ASCII == 10)        //按下回车
                 return choose_test_sign;
         }
@@ -225,11 +235,19 @@ int Add_list()
         scanf("%s",temp);
         if (!strcmp(temp,"q"))
         {
-            getchar();
-            sum_of_words[sum_of_list+1] = word_num;
-            sum_of_list++;
-            Save();
-            return;
+            if (word_num != 1)
+            {
+                getchar();
+                sum_of_words[sum_of_list+1] = word_num;
+                sum_of_list++;
+                Save();
+                return;
+            }
+            else
+            {
+                getchar();
+                return;
+            }
         }
         printf("%s",set_xy(11,31));
         scanf("%s",Ch[sum_of_list+1][word_num]);
@@ -242,21 +260,24 @@ int Add_list()
 void Show_()
 {
     int temp=0,word_num=1,x=8;
-    printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
+    char a;
+    printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
     while(x < 15)
     {
-        printf("%s%s☆%s                               %s☆%s\n",set_xy(x++,20),\
-        red,cc_close,red,cc_close);
+        printf("%s%s☆%s                               %s%s☆%s",set_xy(x,20),\
+        red,cc_close,set_xy(x,52),red,cc_close);
+        x++;
     }
-    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(15,20),red,cc_close);
+    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(15,20),red,cc_close);
     temp = Show_List();
-    printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
+    printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
     while(x >= 8)
     {
-        printf("%s%s☆%s                               %s☆%s\n",set_xy(x--,20),\
-        red,cc_close,red,cc_close);
+        printf("%s%s☆%s                               %s%s☆%s",set_xy(x,20),\
+        red,cc_close,set_xy(x,52),red,cc_close);
+        x--;
     }
-    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s\n",set_xy(15,20),red,cc_close);
+    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(15,20),red,cc_close);
     x = 9;
     if (temp != 0)
     {
@@ -268,11 +289,23 @@ void Show_()
             word_num++;
             x++;
         }
-        getchar();
+        while(1)
+        {
+            temp = check_kb();
+            if (temp == 'q')
+                return;
+        }
     }
+    else
+        return;
+    scanf("%s",&a);
+
 }
 
 void EntoCh()
 {
+    int temp = 0,word_num = 0;
+    temp = Show_List();
     
+
 }
