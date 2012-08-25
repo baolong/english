@@ -259,16 +259,17 @@ int Add_list()
 
 void Show_()
 {
-    int temp=0,word_num=1,x=8;
+    int temp=0,temp1=0,word_num=1,x=8;
     char a;
+    int num=1;
     printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
-    while(x < 15)
+    while(x < 20)
     {
         printf("%s%s☆%s                               %s%s☆%s",set_xy(x,20),\
         red,cc_close,set_xy(x,52),red,cc_close);
         x++;
     }
-    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(15,20),red,cc_close);
+    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(20,20),red,cc_close);
     temp = Show_List();
     printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
     while(x >= 8)
@@ -277,24 +278,48 @@ void Show_()
         red,cc_close,set_xy(x,52),red,cc_close);
         x--;
     }
-    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(15,20),red,cc_close);
+    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(20,20),red,cc_close);
     x = 9;
     if (temp != 0)
     {
         printf("%s%s该列表单词数：%d%s",set_xy(8,22),yellow,sum_of_words[temp]-1,cc_close);
-        while(word_num < sum_of_words[temp])
-        {
-            printf("%s%s单词：%s%s",set_xy(x++,22),blue,En[temp][word_num],cc_close);
-            printf("%s%s解释：%s%s",set_xy(x++,22),green,Ch[temp][word_num],cc_close);
-            word_num++;
-            x++;
-        }
+//        while(word_num < sum_of_words[temp])
         while(1)
         {
-            temp = check_kb();
-            if (temp == 'q')
-                return;
+            printf("%s%s单词：%s%s",set_xy(9,22),blue,En[temp][num],cc_close);
+            printf("%s%s解释：%s%s",set_xy(10,22),green,Ch[temp][num],cc_close);
+            if (strcmp(En[temp][num+1],""))
+            {
+                printf("%s%s单词：%s%s",set_xy(12,22),blue,En[temp][num+1],cc_close);
+                printf("%s%s解释：%s%s",set_xy(13,22),green,Ch[temp][num+1],cc_close);
+            }
+            if (strcmp(En[temp][num+2],""))
+            {
+                printf("%s%s单词：%s%s",set_xy(15,22),blue,En[temp][num+2],cc_close);
+                printf("%s%s解释：%s%s",set_xy(16,22),green,Ch[temp][num+2],cc_close);
+            }
+            temp1 = check_kb();
+            if (temp1 == 66)
+            {
+                if ((num+2) < sum_of_words[temp]-1)
+                  num++;
+            }
+            else if (temp1 == 65)
+            {
+                if (num > 1)
+                  num--;
+            }
+            else if (temp1 == 'q')
+              return;
+//            word_num++;
+//            x++;
         }
+//        while(1)
+//        {
+//            temp = check_kb();
+//            if (temp == 'q')
+//                return;
+//        }
     }
     else
         return;
