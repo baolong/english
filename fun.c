@@ -333,7 +333,18 @@ int Add_list()
 
 void EntoCh(int temp)
 {
+    int x = 8;
+    printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
+    while(x < 20)
+    {
+        printf("%s%s☆%s                               %s%s☆%s",set_xy(x,20),\
+        red,cc_close,set_xy(x,52),red,cc_close);
+        x++;
+    }
+    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(20,20),red,cc_close);
+ 
     unsigned int Rand_num[100] = {0},num_temp=0;
+    char date[40];
     int num=0,sign=0;
     srand((int)time(0));
     while(num < sum_of_words[temp]-1)
@@ -357,12 +368,19 @@ void EntoCh(int temp)
         }
     }
     num = 0;
-    printf("\n单词数:%d",sum_of_words[temp]-1);
+    printf("%s%s英译汉测试:%s",set_xy(8,22),green,cc_close);
     while(num < sum_of_words[temp]-1)
     {
-        if (num%30 == 0)
-          printf("\n");
-        printf("%d ",Rand_num[num]);
+        printf("%s%s%2d/%d%s",set_xy(8,40),yellow,num+1,sum_of_words[temp]-1,cc_close);
+        printf("%s%s%s%s英文:%s%s%s%s☆%s",set_xy(10,22),cc_clear_line,\
+            set_xy(10,22),yellow,En[temp][Rand_num[num]+1],cc_close,set_xy(10,52),red,cc_close);
+        printf("%s%s%s%s中文:%s%s%s☆%s%s",set_xy(11,22),cc_clear_line,\
+            set_xy(11,22),blue,cc_close,set_xy(11,52),red,cc_close,set_xy(11,27));
+        scanf("%s",date);
+        if (!strcmp(date,Ch[temp][Rand_num[num]+1]))
+            printf("%s%s%s恭喜，答对啦.%s%s%s☆%s",set_xy(19,22),cc_clear_line,set_xy(19,22),cc_close,set_xy(x,52),red,cc_close);
+        else
+            printf("%s%s%s对不起，答错了。%s%s%s☆%s",set_xy(19,22),cc_clear_line,set_xy(19,22),cc_close,set_xy(x,52),red,cc_close);
         num++;
     }
     getchar();

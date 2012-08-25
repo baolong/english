@@ -2,10 +2,9 @@
 
 int sum_of_list = 0;
 int sum_of_words[31]= {0};
-char En[30][100][40];
-//int sum_of_words[30]={3,4,5,2,1};
-//char En[30][100][40]={{"qwe","asd","zcx"},{"vxcv","vbc","hjj","mnm"},{"qwer","rd","dfs","fg","dfd"},{"eqwe","df"},{"sd"}};
-char Ch[30][100][40];
+char En[30][100][40]={""};
+char Ch[30][100][40]={""};
+int Sign[30][100] = {0};
 
 //background colours define
 char *back_black={"\033[40m"};
