@@ -128,7 +128,7 @@ void Menu_Display()
     {
         if (sign == 1)
         {
-            EntoCh();
+            Show_List(1);
         }
         else if(sign == 2)
         {
@@ -136,7 +136,7 @@ void Menu_Display()
         }
         else if (sign == 3)
         {
-            Show_List();
+            Show_List(3);
         }
         else if (sign == 4)
         {
@@ -225,7 +225,7 @@ void Show_(int temp)
 
 }
 
-int Show_List()
+int Show_List(int menu_choose)
 {
     unsigned int list_num=1;
     int x=8;
@@ -281,7 +281,14 @@ int Show_List()
             else if (ASCII == 'q')
                 return 0;
             else if (ASCII == 10)        //按下回车
-                Show_(choose_test_sign);
+            {
+                if (menu_choose == 1)
+                    EntoCh(choose_test_sign);
+                else if (menu_choose == 2);
+                else if (menu_choose == 3)
+                    Show_(choose_test_sign);
+                else if (menu_choose == 5);
+            }
         }
     }
     return 0;
@@ -324,10 +331,39 @@ int Add_list()
     }
 }
 
-void EntoCh()
+void EntoCh(int temp)
 {
-    int temp = 0,word_num = 0;
-    temp = Show_List();
-    
-
+    unsigned int Rand_num[100] = {0},num_temp=0;
+    int num=0,sign=0;
+    srand((int)time(0));
+    while(num < sum_of_words[temp]-1)
+    {
+        sign = 0;
+        int a=0;
+        num_temp = rand()%(sum_of_words[temp]-1);
+        while(a < num)
+        {
+            if (num_temp == Rand_num[a])
+            {
+                sign++;
+                break;
+            }
+            a++;
+        }
+        if (sign == 0)
+        {
+            Rand_num[num] = num_temp;
+            num++;
+        }
+    }
+    num = 0;
+    printf("\n单词数:%d",sum_of_words[temp]-1);
+    while(num < sum_of_words[temp]-1)
+    {
+        if (num%30 == 0)
+          printf("\n");
+        printf("%d ",Rand_num[num]);
+        num++;
+    }
+    getchar();
 }
