@@ -20,6 +20,8 @@ void Init()
     {
         fread(&sum_of_list,sizeof(sum_of_list),1,fp);
         fread(sum_of_words,sizeof(sum_of_words),1,fp);
+        fread(Sign,sizeof(Sign),1,fp);
+        fread(Sign_Test_Count,sizeof(Sign_Test_Count),1,fp);
         while(num_list <= sum_of_list)
         {
             num_word=0;
@@ -50,6 +52,8 @@ void Save()
     }
     fwrite(&sum_of_list,sizeof(sum_of_list),1,fp);
     fwrite(sum_of_words,sizeof(sum_of_words),1,fp);
+    fwrite(Sign,sizeof(Sign),1,fp);
+    fwrite(Sign_Test_Count,sizeof(Sign_Test_Count),1,fp);
     while(num_list <= sum_of_list)
     {
         num_word=0;
@@ -122,6 +126,7 @@ void Menu_Display()
     else if (ASCII == 'q')
     {
         printf("%s%s%s",cc_show,set_xy(0,0),cc_clear);
+        Save();
         exit(1);
     }
     else if (ASCII == 10)        //按下回车
@@ -153,6 +158,7 @@ void Menu_Display()
         else if (sign ==7)
         {
             printf("%s%s%s",cc_show,set_xy(0,0),cc_clear);
+            Save();
             exit(1);
         }
     }
@@ -333,6 +339,7 @@ int Add_list()
 
 void EntoCh(int temp)
 {
+    int temp1=0;
     int x = 8;
     printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
     while(x < 20)
@@ -428,5 +435,8 @@ void EntoCh(int temp)
         }
         a++;
     }
-    scanf("%d",&a);
+    printf("\n");
+    while(1)
+        if (check_kb() == 'q')
+            return;
 }
