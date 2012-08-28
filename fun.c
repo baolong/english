@@ -371,17 +371,62 @@ void EntoCh(int temp)
     printf("%s%s英译汉测试:%s",set_xy(8,22),green,cc_close);
     while(num < sum_of_words[temp]-1)
     {
-        printf("%s%s%2d/%d%s",set_xy(8,40),yellow,num+1,sum_of_words[temp]-1,cc_close);
+        int num_sign=1;
+        printf("%s%s%2d/%d%s",set_xy(8,47),yellow,num+1,sum_of_words[temp]-1,cc_close);
         printf("%s%s%s%s英文:%s%s%s%s☆%s",set_xy(10,22),cc_clear_line,\
             set_xy(10,22),yellow,En[temp][Rand_num[num]+1],cc_close,set_xy(10,52),red,cc_close);
         printf("%s%s%s%s中文:%s%s%s☆%s%s",set_xy(11,22),cc_clear_line,\
             set_xy(11,22),blue,cc_close,set_xy(11,52),red,cc_close,set_xy(11,27));
         scanf("%s",date);
         if (!strcmp(date,Ch[temp][Rand_num[num]+1]))
-            printf("%s%s%s恭喜，答对啦.%s%s%s☆%s",set_xy(19,22),cc_clear_line,set_xy(19,22),cc_close,set_xy(x,52),red,cc_close);
+        {
+            printf("%s%s%s恭喜，答对啦.%s%s%s☆%s",set_xy(19,22),\
+                cc_clear_line,set_xy(19,22),cc_close,set_xy(19,52),red,cc_close);
+            if (Sign_Test_Count[temp] < 10)
+                Sign[temp][Rand_num[num]+1][Sign_Test_Count[temp]] = 1;
+            else
+            {
+                while(num_sign < 10)
+                {
+                    Sign[temp][Rand_num[num]+1][num_sign-1] = \
+                        Sign[temp][Rand_num[num]+1][num_sign];
+                    num_sign++;
+                }
+                Sign[temp][Rand_num[num]+1][9] = 1;
+            }
+        }
         else
-            printf("%s%s%s对不起，答错了。%s%s%s☆%s",set_xy(19,22),cc_clear_line,set_xy(19,22),cc_close,set_xy(x,52),red,cc_close);
+        {
+            printf("%s%s%s对不起，答错了。%s%s%s☆%s",set_xy(19,22),\
+                cc_clear_line,set_xy(19,22),cc_close,set_xy(19,52),red,cc_close);
+            if (Sign_Test_Count[temp] < 10)
+                Sign[temp][Rand_num[num]+1][Sign_Test_Count[temp]] = 2; 
+            else
+            {
+                while(num_sign < 10)
+                {
+                    Sign[temp][Rand_num[num]+1][num_sign-1] = \
+                        Sign[temp][Rand_num[num]+1][num_sign];
+                    num_sign++;
+                }
+                Sign[temp][Rand_num[num]+1][9] = 2;
+            }
+        }
         num++;
     }
-    getchar();
+    if (Sign_Test_Count[temp] < 10)
+        Sign_Test_Count[temp]++;
+    int a=0,b=0;
+    while(a < sum_of_words[temp]-1)
+    {
+        b = 0;
+        printf("\n单词:%s 检测次数:%d ■",En[temp][a+1],Sign_Test_Count[temp]);
+        while(b < 10)
+        {
+            printf(" %d",Sign[temp][a+1][b]);
+            b++;
+        }
+        a++;
+    }
+    scanf("%d",&a);
 }
