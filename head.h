@@ -10,7 +10,8 @@ extern int sum_of_words[31];
 extern char En[30][100][40];
 extern char Ch[30][100][40];
 extern int Sign[30][100][10];
-int Sign_Test_Count[30];
+int Sign_Test_Count_Ch[30];
+int Sign_Test_Count_En[30];
 
 //background colours define
 extern char *back_black;

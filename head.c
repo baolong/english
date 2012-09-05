@@ -5,7 +5,8 @@ int sum_of_words[31]= {0};
 char En[30][100][40]={""};
 char Ch[30][100][40]={""};
 int Sign[30][100][10] = {0};
-int Sign_Test_Count[30]={0};
+int Sign_Test_Count_Ch[30]={0};
+int Sign_Test_Count_En[30]={0};
 
 //background colours define
 char *back_black={"\033[40m"};

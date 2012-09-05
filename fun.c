@@ -21,7 +21,8 @@ void Init()
         fread(&sum_of_list,sizeof(sum_of_list),1,fp);
         fread(sum_of_words,sizeof(sum_of_words),1,fp);
         fread(Sign,sizeof(Sign),1,fp);
-        fread(Sign_Test_Count,sizeof(Sign_Test_Count),1,fp);
+        fread(Sign_Test_Count_En,sizeof(Sign_Test_Count_En),1,fp);
+        fread(Sign_Test_Count_Ch,sizeof(Sign_Test_Count_Ch),1,fp);
         while(num_list <= sum_of_list)
         {
             num_word=0;
@@ -31,7 +32,6 @@ void Init()
                 fread(En[num_list][num_word],word_len,1,fp);
                 fread(&word_len,sizeof(word_len),1,fp);
                 fread(Ch[num_list][num_word],word_len,1,fp);
-
                 num_word++;
             }
             num_list++;
@@ -53,7 +53,8 @@ void Save()
     fwrite(&sum_of_list,sizeof(sum_of_list),1,fp);
     fwrite(sum_of_words,sizeof(sum_of_words),1,fp);
     fwrite(Sign,sizeof(Sign),1,fp);
-    fwrite(Sign_Test_Count,sizeof(Sign_Test_Count),1,fp);
+    fwrite(Sign_Test_Count_En,sizeof(Sign_Test_Count_En),1,fp);
+    fwrite(Sign_Test_Count_Ch,sizeof(Sign_Test_Count_Ch),1,fp);
     while(num_list <= sum_of_list)
     {
         num_word=0;
@@ -99,13 +100,13 @@ void Menu_Display()
                 red,cc_close,blue,choose_show[2],cc_close,set_xy(9,52),red,cc_close);
     printf("%s%s☆%s%s       %s3. 查看学习进度%s         %s%s☆%s",set_xy(10,20),\
                 red,cc_close,blue,choose_show[3],cc_close,set_xy(10,52),red,cc_close);
-    printf("%s%s☆%s%s       %s4. 录入新词汇组%s         %s%s☆%s",set_xy(11,20),\
+    printf("%s%s☆%s%s       %s4. 录入新词汇组(未实现)%s         %s%s☆%s",set_xy(11,20),\
                 red,cc_close,blue,choose_show[4],cc_close,set_xy(11,52),red,cc_close);
-    printf("%s%s☆%s%s       %s5. 删除词汇组%s           %s%s☆%s",set_xy(12,20),\
+    printf("%s%s☆%s%s       %s5. 删除词汇组(未实现)%s           %s%s☆%s",set_xy(12,20),\
                 red,cc_close,blue,choose_show[5],cc_close,set_xy(12,52),red,cc_close);
-    printf("%s%s☆%s%s       %s6. 导        入%s         %s%s☆%s",set_xy(13,20),\
+    printf("%s%s☆%s%s       %s6. 导        入(未实现)%s         %s%s☆%s",set_xy(13,20),\
                 red,cc_close,blue,choose_show[6],cc_close,set_xy(13,52),red,cc_close);
-    printf("%s%s☆%s%s       %s7. 退        出%s         %s%s☆%s",set_xy(14,20),\
+    printf("%s%s☆%s%s       %s5. 退        出%s         %s%s☆%s",set_xy(14,20),\
                 red,cc_close,blue,choose_show[7],cc_close,set_xy(14,52),red,cc_close);
     printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(15,20),red,cc_close);
     ASCII = check_kb();
@@ -137,7 +138,7 @@ void Menu_Display()
         }
         else if(sign == 2)
         {
-            ;
+            Show_List(2);
         }
         else if (sign == 3)
         {
@@ -166,6 +167,7 @@ void Menu_Display()
 
 void Show_(int temp)
 {
+    char choose_sign[sum_of_words[temp]][9];//={"\033[32m"};
     int temp1=0,word_num=1,x=8;
     char a;
     int num=1;
@@ -181,7 +183,6 @@ void Show_(int temp)
     if (temp != 0)
     {
         printf("%s%s该列表单词数：%d ↑:上翻 ↓:下翻%s",set_xy(8,22),yellow,sum_of_words[temp]-1,cc_close);
-//        while(word_num < sum_of_words[temp])
         while(1)
         {
             printf("%s%s%s%s☆%s%s%s单词：%s%s%s%s☆%s",set_xy(9,20),cc_clear_line,set_xy(9,20),red,cc_close,\
@@ -194,7 +195,6 @@ void Show_(int temp)
                         set_xy(12,22),blue,En[temp][num+1],cc_close,set_xy(12,52),red,cc_close);
                 printf("%s%s%s%s☆%s%s%s解释：%s%s%s%s☆%s",set_xy(13,20),cc_clear_line,set_xy(13,20),red,cc_close,\
                         set_xy(13,22),green,Ch[temp][num+1],cc_close,set_xy(13,52),red,cc_close);
-
             }
             if (strcmp(En[temp][num+2],""))
             {
@@ -222,7 +222,7 @@ void Show_(int temp)
                   num--;
             }
             else if (temp1 == 'q')
-              return;
+                return;
         }
     }
     else
@@ -290,7 +290,8 @@ int Show_List(int menu_choose)
             {
                 if (menu_choose == 1)
                     EntoCh(choose_test_sign);
-                else if (menu_choose == 2);
+                else if (menu_choose == 2)
+                    ChtoEn(choose_test_sign);
                 else if (menu_choose == 3)
                     Show_(choose_test_sign);
                 else if (menu_choose == 5);
@@ -389,8 +390,8 @@ void EntoCh(int temp)
         {
             printf("%s%s%s恭喜，答对啦.%s%s%s☆%s",set_xy(19,22),\
                 cc_clear_line,set_xy(19,22),cc_close,set_xy(19,52),red,cc_close);
-            if (Sign_Test_Count[temp] < 10)
-                Sign[temp][Rand_num[num]+1][Sign_Test_Count[temp]] = 1;
+            if (Sign_Test_Count_En[temp] < 10)
+                Sign[temp][Rand_num[num]+1][Sign_Test_Count_En[temp]] = 1;
             else
             {
                 while(num_sign < 10)
@@ -406,8 +407,8 @@ void EntoCh(int temp)
         {
             printf("%s%s%s对不起，答错了。%s%s%s☆%s",set_xy(19,22),\
                 cc_clear_line,set_xy(19,22),cc_close,set_xy(19,52),red,cc_close);
-            if (Sign_Test_Count[temp] < 10)
-                Sign[temp][Rand_num[num]+1][Sign_Test_Count[temp]] = 2; 
+            if (Sign_Test_Count_En[temp] < 10)
+                Sign[temp][Rand_num[num]+1][Sign_Test_Count_En[temp]] = 2; 
             else
             {
                 while(num_sign < 10)
@@ -421,22 +422,110 @@ void EntoCh(int temp)
         }
         num++;
     }
-    if (Sign_Test_Count[temp] < 10)
-        Sign_Test_Count[temp]++;
+    if (Sign_Test_Count_En[temp] < 10)
+        Sign_Test_Count_En[temp]++;
     int a=0,b=0;
-    while(a < sum_of_words[temp]-1)
-    {
-        b = 0;
-        printf("\n单词:%s 检测次数:%d ■",En[temp][a+1],Sign_Test_Count[temp]);
-        while(b < 10)
-        {
-            printf(" %d",Sign[temp][a+1][b]);
-            b++;
-        }
-        a++;
-    }
-    printf("\n");
+//    while(a < sum_of_words[temp]-1)
+//    {
+
+//    }
     while(1)
         if (check_kb() == 'q')
             return;
+}
+
+void ChtoEn(int temp)
+{
+    int temp1=0;
+    int x = 8;
+    printf("%s%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_hide,cc_clear,set_xy(7,20),red,cc_close);
+    while(x < 20)
+    {
+        printf("%s%s☆%s                               %s%s☆%s",set_xy(x,20),\
+        red,cc_close,set_xy(x,52),red,cc_close);
+        x++;
+    }
+    printf("%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",set_xy(20,20),red,cc_close);
+ 
+    unsigned int Rand_num[100] = {0},num_temp=0;
+    char date[40];
+    int num=0,sign=0;
+    srand((int)time(0));
+    while(num < sum_of_words[temp]-1)
+    {
+        sign = 0;
+        int a=0;
+        num_temp = rand()%(sum_of_words[temp]-1);
+        while(a < num)
+        {
+            if (num_temp == Rand_num[a])
+            {
+                sign++;
+                break;
+            }
+            a++;
+        }
+        if (sign == 0)
+        {
+            Rand_num[num] = num_temp;
+            num++;
+        }
+    }
+    num = 0;
+    printf("%s%s汉译英测试:%s",set_xy(8,22),green,cc_close);
+    while(num < sum_of_words[temp]-1)
+    {
+        int num_sign=1;
+        printf("%s%s%2d/%d%s",set_xy(8,47),yellow,num+1,sum_of_words[temp]-1,cc_close);
+        printf("%s%s%s%s英文:%s%s%s%s☆%s",set_xy(10,22),cc_clear_line,\
+            set_xy(10,22),yellow,En[temp][Rand_num[num]+1],cc_close,set_xy(10,52),red,cc_close);
+        printf("%s%s%s%s中文:%s%s%s☆%s%s",set_xy(11,22),cc_clear_line,\
+            set_xy(11,22),blue,cc_close,set_xy(11,52),red,cc_close,set_xy(11,27));
+        scanf("%s",date);
+        if (!strcmp(date,Ch[temp][Rand_num[num]+1]))
+        {
+            printf("%s%s%s恭喜，答对啦.%s%s%s☆%s",set_xy(19,22),\
+                cc_clear_line,set_xy(19,22),cc_close,set_xy(19,52),red,cc_close);
+            if (Sign_Test_Count_Ch[temp] < 10)
+                Sign[temp][Rand_num[num]+1][Sign_Test_Count_Ch[temp]] = 1;
+            else
+            {
+                while(num_sign < 10)
+                {
+                    Sign[temp][Rand_num[num]+1][num_sign-1] = \
+                        Sign[temp][Rand_num[num]+1][num_sign];
+                    num_sign++;
+                }
+                Sign[temp][Rand_num[num]+1][9] = 1;
+            }
+        }
+        else
+        {
+            printf("%s%s%s对不起，答错了。%s%s%s☆%s",set_xy(19,22),\
+                cc_clear_line,set_xy(19,22),cc_close,set_xy(19,52),red,cc_close);
+            if (Sign_Test_Count_Ch[temp] < 10)
+                Sign[temp][Rand_num[num]+1][Sign_Test_Count_Ch[temp]] = 2; 
+            else
+            {
+                while(num_sign < 10)
+                {
+                    Sign[temp][Rand_num[num]+1][num_sign-1] = \
+                        Sign[temp][Rand_num[num]+1][num_sign];
+                    num_sign++;
+                }
+                Sign[temp][Rand_num[num]+1][9] = 2;
+            }
+        }
+        num++;
+    }
+    if (Sign_Test_Count_Ch[temp] < 10)
+        Sign_Test_Count_Ch[temp]++;
+    int a=0,b=0;
+//    while(a < sum_of_words[temp]-1)
+//    {
+
+//    }
+    while(1)
+        if (check_kb() == 'q')
+            return; 
 }
