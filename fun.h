@@ -13,4 +13,5 @@ int Add_list();
 void Show_();
 void Menu_Display();
 void EntoCh();
+void ChtoEn();
 #endif
