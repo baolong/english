@@ -7,6 +7,8 @@ char choose_show[8][12] = {"","\033[34m","\033[34m","\033[34m","\033[34m","\033[
 char choose_test_show[31][12];
 unsigned int sign = 1,sign_last = 0;
 int choose_test_sign=1,choose_test_sign_last = 0;
+char choose_word[5][12]={"","\033[34m","\033[34m","\033[34m","\033[34m"};
+int choose_word_sign = 1,choose_word_sign_last = 0;
 
 void Init()
 {
@@ -177,41 +179,60 @@ void Show_(int temp)
         printf("%s%s该列表单词数：%d ↑:上翻 ↓:下翻%s",set_xy(8,22),yellow,sum_of_words[temp]-1,cc_close);
         while(1)
         {
-            printf("%s%s%s%s☆%s%s%s单词：%s%s%s%s☆%s",set_xy(9,20),cc_clear_line,set_xy(9,20),red,cc_close,\
-                        set_xy(9,22),blue,En[temp][num-3],cc_close,set_xy(9,52),red,cc_close);
-            printf("%s%s%s%s☆%s%s%s解释：%s%s%s%s☆%s",set_xy(10,20),cc_clear_line,set_xy(10,20),red,cc_close,\
-                        set_xy(10,22),green,Ch[temp][num-3],cc_close,set_xy(10,52),red,cc_close);
-            if (strcmp(En[temp][num-2],""))
+            strcpy(choose_word[choose_word_sign],"\033[45;37m");
+            strcpy(choose_word[choose_word_sign_last],"\033[34m");
             {
-                printf("%s%s%s%s☆%s%s%s单词：%s%s%s%s☆%s",set_xy(12,20),cc_clear_line,set_xy(12,20),red,cc_close,\
-                        set_xy(12,22),blue,En[temp][num-2],cc_close,set_xy(12,52),red,cc_close);
-                printf("%s%s%s%s☆%s%s%s解释：%s%s%s%s☆%s",set_xy(13,20),cc_clear_line,set_xy(13,20),red,cc_close,\
-                        set_xy(13,22),green,Ch[temp][num-2],cc_close,set_xy(13,52),red,cc_close);
-            }
-            if (strcmp(En[temp][num-1],""))
-            {
-                printf("%s%s%s%s☆%s%s%s单词：%s%s%s%s☆%s",set_xy(15,20),cc_clear_line,set_xy(15,20),red,cc_close,\
-                        set_xy(15,22),blue,En[temp][num-1],cc_close,set_xy(15,52),red,cc_close);
-                printf("%s%s%s%s☆%s%s%s解释：%s%s%s%s☆%s",set_xy(16,20),cc_clear_line,set_xy(16,20),red,cc_close,\
-                        set_xy(16,22),green,Ch[temp][num-1],cc_close,set_xy(16,52),red,cc_close);
-            }
-            if (strcmp(En[temp][num],""))
-            {
-                printf("%s%s%s%s☆%s%s%s单词：%s%s%s%s☆%s",set_xy(18,20),cc_clear_line,set_xy(18,20),red,cc_close,\
-                        set_xy(18,22),blue,En[temp][num],cc_close,set_xy(18,52),red,cc_close);
-                printf("%s%s%s%s☆%s%s%s解释：%s%s%s%s☆%s",set_xy(19,20),cc_clear_line,set_xy(19,20),red,cc_close,\
-                        set_xy(19,22),green,Ch[temp][num],cc_close,set_xy(19,52),red,cc_close);
+                printf("%s%s%s%s☆%s%s%s单词：%s%s%s%s☆%s",set_xy(9,20),cc_clear_line,set_xy(9,20),red,cc_close,\
+                    set_xy(9,22),choose_word[1],En[temp][num-3],cc_close,set_xy(9,52),red,cc_close);
+                printf("%s%s%s%s☆%s%s%s解释：%s%s%s%s☆%s",set_xy(10,20),cc_clear_line,set_xy(10,20),red,cc_close,\
+                            set_xy(10,22),choose_word[1],Ch[temp][num-3],cc_close,set_xy(10,52),red,cc_close);
+                if (strcmp(En[temp][num-2],""))
+                {
+                     printf("%s%s%s%s☆%s%s%s单词：%s%s%s%s☆%s",set_xy(12,20),cc_clear_line,set_xy(12,20),red,cc_close,\
+                        set_xy(12,22),choose_word[2],En[temp][num-2],cc_close,set_xy(12,52),red,cc_close);
+                    printf("%s%s%s%s☆%s%s%s解释：%s%s%s%s☆%s",set_xy(13,20),cc_clear_line,set_xy(13,20),red,cc_close,\
+                        set_xy(13,22),choose_word[2],Ch[temp][num-2],cc_close,set_xy(13,52),red,cc_close);
+                }
+                if (strcmp(En[temp][num-1],""))
+                {
+                    printf("%s%s%s%s☆%s%s%s单词：%s%s%s%s☆%s",set_xy(15,20),cc_clear_line,set_xy(15,20),red,cc_close,\
+                        set_xy(15,22),choose_word[3],En[temp][num-1],cc_close,set_xy(15,52),red,cc_close);
+                    printf("%s%s%s%s☆%s%s%s解释：%s%s%s%s☆%s",set_xy(16,20),cc_clear_line,set_xy(16,20),red,cc_close,\
+                        set_xy(16,22),choose_word[3],Ch[temp][num-1],cc_close,set_xy(16,52),red,cc_close);
+                }
+                if (strcmp(En[temp][num],""))
+                {
+                    printf("%s%s%s%s☆%s%s%s单词：%s%s%s%s☆%s",set_xy(18,20),cc_clear_line,set_xy(18,20),red,cc_close,\
+                        set_xy(18,22),choose_word[4],En[temp][num],cc_close,set_xy(18,52),red,cc_close);
+                    printf("%s%s%s%s☆%s%s%s解释：%s%s%s%s☆%s",set_xy(19,20),cc_clear_line,set_xy(19,20),red,cc_close,\
+                        set_xy(19,22),choose_word[4],Ch[temp][num],cc_close,set_xy(19,52),red,cc_close);
+                }   
             }
             temp1 = check_kb();
             if (temp1 == 66)
             {
-                if ((num) < sum_of_words[temp]-1)
-                  num++;
+                if (choose_word_sign<4)
+                {
+                    choose_word_sign_last = choose_word_sign;
+                    choose_word_sign++;
+                }
+                else if (choose_word_sign == 4)
+                {
+                    if ((num) < sum_of_words[temp]-1)
+                    num++;
+                }
             }
-            else if (temp1 == 65)
+            if (temp1 == 65)
             {
-                if (num > 4)
-                  num--;
+                if (choose_word_sign>1)
+                {
+                    choose_word_sign_last = choose_word_sign;
+                    choose_word_sign--;
+                }
+                else if (choose_word_sign == 1 && num > 4)
+                {
+                    num--;
+                }
             }
             else if (temp1 == 'q')
                 return;
@@ -220,7 +241,6 @@ void Show_(int temp)
     else
         return;
     scanf("%d",&x);
-
 }
 
 int Show_List(int menu_choose)
