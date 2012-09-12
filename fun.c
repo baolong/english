@@ -158,9 +158,30 @@ void Menu_Display()
     }
 }
 
-void Show_log(int temp)
+void Show_log(int temp,int word_num,int choose_num)
 {
-            
+    int num = 0;
+    int word_num_temp=1;
+    printf("%s%s%s最近10次测试结果:%s 1 2 3 4 5 6 7 8 9 10%s%s",cc_clear_line,set_xy(21,20),red,set_xy(22,20),cc_close,set_xy(23,20));
+    char c[2];
+    if (word_num == 4)
+        word_num_temp = choose_num;
+    else
+        word_num_temp = word_num - (4 - choose_num);
+    while(num < 10)
+    {
+        if (Sign[temp][word_num_temp][num] == 0)
+            strcpy(c,"⊙");
+        else if (Sign[temp][word_num_temp][num] == 1)
+            strcpy(c,"√");
+        else
+            strcpy(c,"X");
+        printf(" %s",c);
+        num++;
+    }
+    printf("\nword_num: %d",word_num_temp);
+//    for (num = 0;num <10;num++)
+//      printf(" %d",Sign[temp][word_num][num]);
 }
 
 void Show_(int temp)
@@ -171,7 +192,7 @@ void Show_(int temp)
     choose_word_sign_last = 0;
     int temp1=0,word_num=1,x=8;
     int num=4;
-    printf("%s%s%sQ:后退 ↑:上翻 ↓:下翻 回车:选择%s",cc_clear,set_xy(6,20),green,cc_close); 
+    printf("%s%s%sQ:后退 ↑:上翻 ↓:下翻%s",cc_clear,set_xy(6,20),green,cc_close); 
     printf("%s%s%s☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆ ☆%s",cc_hide,set_xy(7,20),red,cc_close);
     while(x < 20)
     {
@@ -215,6 +236,7 @@ void Show_(int temp)
                         set_xy(19,22),choose_word[4],Ch[temp][num],set_xy(19,50),cc_close,set_xy(19,52),red,cc_close);
                 }   
             }
+            Show_log(temp,num,choose_word_sign);
             temp1 = check_kb();
             if (temp1 == 66)
             {
@@ -295,17 +317,23 @@ int Show_List(int menu_choose)
             ASCII = check_kb();
             if (ASCII == 66)             //按下方向键↑
             {
-                choose_test_sign_last = choose_test_sign;
-                choose_test_sign++;
-                if (choose_test_sign == sum_of_list + 1)
-                    choose_test_sign = 1;
+                if (sum_of_list > 1)
+                {
+                    choose_test_sign_last = choose_test_sign;
+                    choose_test_sign++;
+                    if (choose_test_sign == sum_of_list + 1)
+                        choose_test_sign = 1;
+                }
             }
             else if (ASCII == 65)        //按下方向键↓
             {
-                choose_test_sign_last = choose_test_sign;
-                choose_test_sign--;
-                if (choose_test_sign == 0)
-                    choose_test_sign = sum_of_list;
+                if (sum_of_list > 1)
+                {
+                    choose_test_sign_last = choose_test_sign;
+                    choose_test_sign--;
+                    if (choose_test_sign == 0)
+                        choose_test_sign = sum_of_list;
+                }
             }
             else if (ASCII == 'q')
                 return 0;
@@ -348,10 +376,7 @@ int Add_list()
                 return;
             }
             else
-            {
                 getchar();
-                return;
-            }
         }
         printf("%s",set_xy(11,31));
         scanf("%s",Ch[sum_of_list+1][word_num]);
@@ -446,10 +471,16 @@ void EntoCh(int temp)
         }
         num++;
     }
-
+    int zz=0,xx=0;
+    printf("%s",set_xy(21,0));
+    for(zz=0;zz<sum_of_words[temp];zz++)
+    {
+        for (xx=0;xx<10;xx++)
+            printf(" %d",Sign[temp][zz][xx]);
+        printf("\n");
+    }
     if (Sign_Test_Count_En[temp] < 10)
         Sign_Test_Count_En[temp]++;
-    int a=0,b=0;
     while(1)
     {
         printf("%s",set_xy(21,0));
@@ -553,3 +584,4 @@ void ChtoEn(int temp)
             return; 
     }
 }
+
