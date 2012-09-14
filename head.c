@@ -4,7 +4,8 @@ int sum_of_list = 0;
 int sum_of_words[31]= {0};
 char En[30][100][40]={""};
 char Ch[30][100][40]={""};
-int Sign[30][100][10] = {0};
+int Sign_En[30][100][10] = {0};
+int Sign_Ch[30][100][10] = {0};
 int Sign_Test_Count_Ch[30]={0};
 int Sign_Test_Count_En[30]={0};
 
