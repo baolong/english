@@ -164,12 +164,12 @@ void Show_log(int temp,int word_num,int choose_num)
 {
     int num = 0,num_=1,num_temp=0;;
     int word_num_temp=1;
-    printf("%s%s%s单词%s%s%s的最近10次测试结果:%s",cc_clear_line,set_xy(21,20),green,red,En[temp][word_num_temp],green,cc_close);
     char c[2];
     if (word_num == 4)
         word_num_temp = choose_num;
     else
         word_num_temp = word_num - (4 - choose_num);
+    printf("%s%s%s单词%s%s%s%s%s%s的最近10次测试结果:%s",set_xy(21,20),cc_clear_line,green,cc_close,green,cc_contrary,En[temp][word_num_temp],cc_close,green,cc_close);
     printf("%s%s英译汉:%s",set_xy(23,20),cc_clear_line,set_xy(23,28));
     while(num < 10)
     {
@@ -552,12 +552,12 @@ void ChtoEn(int temp)
     {
         int num_sign=1;
         printf("%s%s%2d/%d%s",set_xy(8,47),yellow,num+1,sum_of_words[temp]-1,cc_close);
-        printf("%s%s%s%s英文:%s%s%s%s☆%s",set_xy(10,22),cc_clear_line,\
-            set_xy(10,22),yellow,En[temp][Rand_num[num]+1],cc_close,set_xy(10,52),red,cc_close);
-        printf("%s%s%s%s中文:%s%s%s☆%s%s",set_xy(11,22),cc_clear_line,\
+        printf("%s%s%s%s中文:%s%s%s%s☆%s",set_xy(10,22),cc_clear_line,\
+            set_xy(10,22),yellow,Ch[temp][Rand_num[num]+1],cc_close,set_xy(10,52),red,cc_close);
+        printf("%s%s%s%s英文:%s%s%s☆%s%s",set_xy(11,22),cc_clear_line,\
             set_xy(11,22),blue,cc_close,set_xy(11,52),red,cc_close,set_xy(11,27));
         scanf("%s",date);
-        if (!strcmp(date,Ch[temp][Rand_num[num]+1]))
+        if (!strcmp(date,En[temp][Rand_num[num]+1]))
         {
             printf("%s%s%s恭喜，答对啦.%s%s%s☆%s",set_xy(19,22),\
                 cc_clear_line,set_xy(19,22),cc_close,set_xy(19,52),red,cc_close);
